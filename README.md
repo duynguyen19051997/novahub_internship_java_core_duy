@@ -1,1 +1,1 @@
-# Tuesday At Nova
+# JavaCore Intership At Nova
