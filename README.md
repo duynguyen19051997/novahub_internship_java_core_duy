@@ -1,1 +1,1 @@
-# JavaCore Intership At Nova
+# JavaCore Internship At Nova
