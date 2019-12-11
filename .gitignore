@@ -1,7 +1,11 @@
 .idea
 out
+target
+src/test
 
 **/.idea
 **/out
+**/target
+**/src/test
 
 *.iml
