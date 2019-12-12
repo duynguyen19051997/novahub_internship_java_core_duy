@@ -34,7 +34,7 @@ public class Teacher extends People {
     }
 
     @Override
-    public People insertPeople() {
-        return super.insertPeople();
+    public void insertPeople() {
+        super.insertPeople();
     }
 }
