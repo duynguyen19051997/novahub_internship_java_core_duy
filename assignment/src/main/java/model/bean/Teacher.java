@@ -14,6 +14,7 @@ public class Teacher extends People {
     private int lessionOfMonth;
     private int coefficientsSalary;
     private int yearOfService;
+    private double salary;
 
     public Teacher(int peopleId, String fullName, int yearOfBirth, String address) {
         super(peopleId, fullName, yearOfBirth, address);
@@ -21,7 +22,7 @@ public class Teacher extends People {
 
     public Teacher(int peopleId, String fullName, int yearOfBirth, String address,
                    String faculty, int level, int allowance, int lessionOfMonth,
-                   int coefficientsSalary, int yearOfService) {
+                   int coefficientsSalary, int yearOfService, double salary) {
         super(peopleId, fullName, yearOfBirth, address);
         this.faculty = faculty;
         this.level = level;
@@ -29,5 +30,11 @@ public class Teacher extends People {
         this.lessionOfMonth = lessionOfMonth;
         this.coefficientsSalary = coefficientsSalary;
         this.yearOfService = yearOfService;
+        this.salary = salary;
+    }
+
+    @Override
+    public People insertPeople() {
+        return super.insertPeople();
     }
 }
