@@ -18,7 +18,7 @@ public class People {
 
     public static final Scanner SCANNER = new Scanner(System.in);
 
-    public People insertPeople() {
+    public void insertPeople() {
         this.peopleId = UtilFunc.enterNumber("Nhập mã cán bộ: ");
 
         UtilFunc.print("Nhập họ tên: ");
@@ -28,7 +28,5 @@ public class People {
 
         UtilFunc.print("Nhập quê quán: ");
         this.address = SCANNER.nextLine();
-
-        return this;
     }
 }
