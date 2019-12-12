@@ -11,5 +11,9 @@ public class DefineOfficials {
 
     public static final String[] OFFICIALS_LIST = {"Bachelor", "Master", "Doctor", "Manager",
             "Deputy Head", "Staff", "Labor"};
-    public static final int[] ALLOWANCE_LIST = {300, 900, 2000, 1000, 600, 400};
+    public static int[] ALLOWANCE_LIST = {300, 900, 2000, 1000, 600, 400};
+
+    public static boolean updateAllowanceList(int k, int[] ALLOWANCE_LIST) {
+        return true;
+    }
 }
