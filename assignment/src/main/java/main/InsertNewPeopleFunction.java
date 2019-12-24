@@ -1,6 +1,7 @@
 package main;
 
 import define.DefineOfficials;
+import define.DefinesMessage;
 import model.bean.Labor;
 import model.bean.People;
 import model.bean.Staff;
@@ -8,6 +9,7 @@ import model.bean.Teacher;
 import model.dao.PeopleDAO;
 import utils.UtilFunc;
 
+import java.io.*;
 import java.util.ArrayList;
 
 public class InsertNewPeopleFunction {
@@ -26,6 +28,7 @@ public class InsertNewPeopleFunction {
     public static void function1(ArrayList<People> pList, ArrayList<Teacher> tList,
                                  ArrayList<Labor> lList, ArrayList<Staff> sList) {
         int roleOfOfficial = UtilFunc.enterRoleOfOfficial();
+        boolean message = true;
         Teacher teacher = null;
         Labor labor = null;
         Staff staff = null;
@@ -38,15 +41,21 @@ public class InsertNewPeopleFunction {
             teacher.setLevel(roleOfOfficial);
             teacher.setAllowance(DefineOfficials.ALLOWANCE_LIST[roleOfOfficial]);
             teacher.setSalary(teacher.computeSalaryTeacher());
-            tList.add(teacher);
-            people = teacher;
+            people = new People(teacher.getPeopleId(), teacher.getFullName(), teacher.getYearOfBirth(),
+                    teacher.getAddress());
+            if (!peopleDAO.checkPeopleID(pList, people.getPeopleId())) {
+                tList.add(teacher);
+            }
             System.out.println(teacher.toString());
         } else if (roleOfOfficial == 6) {
             labor = new Labor();
             labor.insertPeople();
             labor.setPeopleId("L" + labor.getPeopleId());
-            lList.add(labor);
-            people = labor;
+            people = new People(labor.getPeopleId(), labor.getFullName(), labor.getYearOfBirth(),
+                    labor.getAddress());
+            if (!peopleDAO.checkPeopleID(pList, people.getPeopleId())) {
+                lList.add(labor);
+            }
             System.out.println(labor.toString());
         } else {
             staff = new Staff();
@@ -54,26 +63,86 @@ public class InsertNewPeopleFunction {
             staff.setPeopleId("S" + staff.getPeopleId());
             staff.setAllowance(DefineOfficials.ALLOWANCE_LIST[roleOfOfficial]);
             staff.setSalary(staff.computeSalaryStaff());
-            sList.add(staff);
-            people = staff;
+            people = new People(staff.getPeopleId(), staff.getFullName(), staff.getYearOfBirth(),
+                    staff.getAddress());
+            if (!peopleDAO.checkPeopleID(pList, people.getPeopleId())) {
+                sList.add(staff);
+            }
             System.out.println(staff.toString());
         }
         showMenuFun1();
-        int number = UtilFunc.enterFunction(6);
+        int number = UtilFunc.enterFunction(6, "Vui lòng chọn chức năng: ");
         switch (number) {
+            case 1:
+                if (peopleDAO.checkPeopleID(pList, people.getPeopleId())) {
+                    System.err.println(DefinesMessage.ID_ERROR_MESSAGE);
+                    break;
+                }
+                message = peopleDAO.addPeopleIntoList(people, pList.size(), pList);
+                if (message) {
+                    System.err.println(DefinesMessage.SUCCESS_MESSAGE);
+                } else {
+                    System.err.println(DefinesMessage.LOSE_MESSAGE);
+                }
+                break;
             case 2:
-                peopleDAO.addPeopleIntoList(people,0, pList);
-                for (People p : pList) {
-                    System.out.println(p.toString());
+                if (peopleDAO.checkPeopleID(pList, people.getPeopleId())) {
+                    System.err.println(DefinesMessage.ID_ERROR_MESSAGE);
+                    break;
                 }
-
-                for (Teacher t : tList) {
-                    System.out.println(t.toString());
+                message = peopleDAO.addPeopleIntoList(people, 0, pList);
+                if (message) {
+                    System.err.println(DefinesMessage.SUCCESS_MESSAGE);
+                } else {
+                    System.err.println(DefinesMessage.LOSE_MESSAGE);
                 }
+                break;
+            case 3:
+                if (peopleDAO.checkPeopleID(pList, people.getPeopleId())) {
+                    System.err.println(DefinesMessage.ID_ERROR_MESSAGE);
+                    break;
+                }
+                int index = UtilFunc.enterFunction(pList.size(), "Nhập vị trí bạn muốn thêm vào (<= "
+                        + pList.size() + "): ");
+                message = peopleDAO.addPeopleIntoList(people, index, pList);
+                if (message) {
+                    System.err.println(DefinesMessage.SUCCESS_MESSAGE);
+                } else {
+                    System.err.println(DefinesMessage.LOSE_MESSAGE);
+                }
+                break;
+            case 4:
+                try {
+                    File file = new File("staff.txt");
+                    FileInputStream fis = new FileInputStream(file);
+                    ObjectInputStream ois = new ObjectInputStream(fis);
+                    ArrayList<Staff> staffList = (ArrayList<Staff>) ois.readObject();
+                    for (Staff s : staffList) {
+                        if (!peopleDAO.checkPeopleID(pList, s.getPeopleId())) {
+                            sList.add(s);
+                            if (peopleDAO.addPeopleIntoList(people, pList.size(), pList)) {
+                                System.err.println(DefinesMessage.SUCCESS_MESSAGE);
+                            } else {
+                                System.err.println(DefinesMessage.LOSE_MESSAGE);
+                            }
+                        }
+                    }
+                } catch (IOException e) {
+                    System.out.println(e.getMessage());
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case 5:
                 break;
             case 6:
                 FunctionMenu.functionDemo(pList, tList, lList, sList);
                 break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + number);
+        }
+        for (People p : pList) {
+            System.out.println(p.toString());
         }
     }
 
