@@ -9,6 +9,8 @@ public class DefineOfficials {
     public static final int STAFF = 5;
     public static final int LABOR = 6;
 
+    public static final int BASIC_SALARY = 200;
+
     public static final String[] OFFICIALS_LIST = {"Bachelor", "Master", "Doctor", "Manager",
             "Deputy Head", "Staff", "Labor"};
     public static int[] ALLOWANCE_LIST = {300, 900, 2000, 1000, 600, 400};

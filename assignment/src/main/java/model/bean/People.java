@@ -11,7 +11,7 @@ import java.util.Scanner;
 @NoArgsConstructor
 @ToString
 public class People {
-    private int peopleId;
+    private String peopleId;
     private String fullName;
     private int yearOfBirth;
     private String address;
@@ -19,7 +19,8 @@ public class People {
     public static final Scanner SCANNER = new Scanner(System.in);
 
     public void insertPeople() {
-        this.peopleId = UtilFunc.enterNumber("Nhập mã cán bộ: ");
+        UtilFunc.print("Nhập mã cán bộ: ");
+        this.peopleId = SCANNER.nextLine();
 
         UtilFunc.print("Nhập họ tên: ");
         this.fullName = SCANNER.nextLine();

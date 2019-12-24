@@ -1,6 +1,10 @@
 package model.bean;
 
+import define.DefineOfficials;
 import lombok.*;
+import utils.UtilFunc;
+
+import java.util.Scanner;
 
 @Getter
 @Setter
@@ -16,11 +20,13 @@ public class Teacher extends People {
     private int yearOfService;
     private double salary;
 
-    public Teacher(int peopleId, String fullName, int yearOfBirth, String address) {
+    private static final Scanner SCANNER = new Scanner(System.in);
+
+    public Teacher(String peopleId, String fullName, int yearOfBirth, String address) {
         super(peopleId, fullName, yearOfBirth, address);
     }
 
-    public Teacher(int peopleId, String fullName, int yearOfBirth, String address,
+    public Teacher(String peopleId, String fullName, int yearOfBirth, String address,
                    String faculty, int level, int allowance, int lessionOfMonth,
                    int coefficientsSalary, int yearOfService, double salary) {
         super(peopleId, fullName, yearOfBirth, address);
@@ -33,8 +39,22 @@ public class Teacher extends People {
         this.salary = salary;
     }
 
+    public double computeSalaryTeacher() {
+        return (this.coefficientsSalary * DefineOfficials.BASIC_SALARY + this.allowance + this.lessionOfMonth * 45);
+    }
+
+
     @Override
     public void insertPeople() {
         super.insertPeople();
+
+        UtilFunc.print("Nhập khoa:");
+        this.faculty = SCANNER.nextLine();
+
+        this.lessionOfMonth = UtilFunc.enterNumber("Nhập số tiết dạy trong tháng: ");
+
+        this.coefficientsSalary = UtilFunc.enterNumber("Nhập hệ số lương: ");
+
+        this.yearOfService = UtilFunc.enterNumber("Nhập số năm làm việc: ");
     }
 }
