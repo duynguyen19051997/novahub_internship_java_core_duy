@@ -23,10 +23,10 @@ public class UtilFunc {
         return number;
     }
 
-    public static int enterFunction(int end) {
+    public static int enterFunction(int end, String text) {
         int number = 0;
         do {
-            print("Vui lòng chọn chức năng: ");
+            print(text);
             try {
                 number = Integer.parseInt(SCANNER.nextLine());
                 if (number > 9 || number < 0) {

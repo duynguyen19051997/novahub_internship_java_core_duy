@@ -18,7 +18,7 @@ public class FunctionMenu {
         FunctionMenu functionMenu = new FunctionMenu();
 
         functionMenu.showMenu();
-        int number = UtilFunc.enterFunction(6);
+        int number = UtilFunc.enterFunction(6, "Vui lòng chọn chức năng: ");
 
         switch (number) {
             case 1:
