@@ -5,6 +5,13 @@ import model.bean.Labor;
 import java.util.ArrayList;
 
 public class LaborDAO {
+    public Labor insertLabor(int role) {
+        Labor labor = new Labor();
+        labor.insertPeople();
+        labor.setPeopleId("L" + labor.getPeopleId());
+        return labor;
+    }
+
     public boolean addLaborIntoList(Labor labor, int k, ArrayList<Labor> list) {
         return true;
     }

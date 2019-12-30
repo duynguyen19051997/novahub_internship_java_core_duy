@@ -1,5 +1,6 @@
 package model.dao;
 
+import define.DefineOfficials;
 import model.bean.Labor;
 import model.bean.Teacher;
 
@@ -10,8 +11,13 @@ public class TeacherDAO {
     public static final Scanner SCANNER = new Scanner(System.in);
 
     public Teacher insertTeacher(int roleOfOfficial) {
-        Teacher t = new Teacher();
-        return t;
+        Teacher teacher = new Teacher();
+        teacher.insertPeople();
+        teacher.setPeopleId("T" + teacher.getPeopleId());
+        teacher.setLevel(roleOfOfficial);
+        teacher.setAllowance(DefineOfficials.ALLOWANCE_LIST[roleOfOfficial]);
+        teacher.setSalary(teacher.computeSalaryTeacher());
+        return teacher;
     }
 
     public boolean addTeacherIntoList(Teacher teacher, int k, ArrayList<Teacher> list) {

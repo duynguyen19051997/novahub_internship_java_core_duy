@@ -52,7 +52,7 @@ public class FunctionMenu {
     }
 
     public void showMenu() {
-        System.out.println("========================Menu==========================================");
+        System.out.println("======================================Menu======================================");
         System.out.println("1. Thêm mới người lao động.");
         System.out.println("2. Chỉnh sửa thông tin người cán bộ.");
         System.out.println("3. Xóa cán bộ.");
@@ -62,7 +62,7 @@ public class FunctionMenu {
         System.out.println("7. Cập nhật lương cơ bản.");
         System.out.println("8. Nhập danh sách mã cán bộ subscribe lương cơ bản.");
         System.out.println("9. Thoát chương trình.");
-        System.out.println("========================Menu==========================================");
+        System.out.println("======================================Menu======================================");
     }
 
     public void function1(ArrayList<People> pList, ArrayList<Teacher> tList,
