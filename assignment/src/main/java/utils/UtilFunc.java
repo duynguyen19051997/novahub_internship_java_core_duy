@@ -13,7 +13,7 @@ public class UtilFunc {
             try {
                 number = Integer.parseInt(SCANNER.nextLine());
                 if (number < 0) {
-                    print("Vui lòng nhập < 0");
+                    print("Vui lòng nhập > 0");
                     check = true;
                 }
             } catch (NumberFormatException e) {
@@ -40,7 +40,7 @@ public class UtilFunc {
     }
 
     public static void print(String text) {
-        System.out.print(text);
+        System.out.println(text);
     }
 
     public static int enterRoleOfOfficial() {
