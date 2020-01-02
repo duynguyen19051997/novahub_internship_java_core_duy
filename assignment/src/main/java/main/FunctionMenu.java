@@ -25,28 +25,21 @@ public class FunctionMenu {
                 InsertNewPeopleFunction.function1(pList, tList, lList, sList);
                 break;
             case 2:
-                functionMenu.function2();
+                EditPeopleFunction.function1(pList, tList, lList, sList);
                 break;
             case 3:
-                functionMenu.function3();
                 break;
             case 4:
-                functionMenu.function4();
                 break;
             case 5:
-                functionMenu.function5();
                 break;
             case 6:
-                functionMenu.function6();
                 break;
             case 7:
-                functionMenu.function7();
                 break;
             case 8:
-                functionMenu.function8();
                 break;
             case 9:
-                functionMenu.function9();
                 break;
         }
     }
@@ -65,45 +58,4 @@ public class FunctionMenu {
         System.out.println("======================================Menu======================================");
     }
 
-    public void function1(ArrayList<People> pList, ArrayList<Teacher> tList,
-                          ArrayList<Labor> lList, ArrayList<Staff> sList) {
-        int roleOfOfficial = UtilFunc.enterRoleOfOfficial();
-        switch (roleOfOfficial) {
-            case 0:
-            case 1:
-            case 2:
-                Teacher teacher = new Teacher();
-                teacher.insertPeople();
-                teacher.setLevel(roleOfOfficial);
-                teacher.setAllowance(DefineOfficials.ALLOWANCE_LIST[roleOfOfficial]);
-                teacher.setSalary(teacher.computeSalaryTeacher());
-                System.out.println(teacher.getFullName());
-                System.out.println(teacher.toString());
-                break;
-        }
-    }
-
-    public void function2() {
-    }
-
-    public void function3() {
-    }
-
-    public void function4() {
-    }
-
-    public void function5() {
-    }
-
-    public void function6() {
-    }
-
-    public void function7() {
-    }
-
-    public void function8() {
-    }
-
-    public void function9() {
-    }
 }

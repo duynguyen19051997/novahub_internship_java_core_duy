@@ -12,6 +12,7 @@ import model.dao.StaffDAO;
 import model.dao.TeacherDAO;
 import utils.UtilFunc;
 
+import java.io.*;
 import java.util.ArrayList;
 
 public class InsertNewPeopleFunction {
@@ -71,19 +72,18 @@ public class InsertNewPeopleFunction {
                     System.out.println(staff.toString());
                 }
                 if (peopleDAO.checkPeopleID(pList, people.getPeopleId())) {
-                    System.err.println(DefinesMessage.ID_ERROR_MESSAGE);
+                    System.err.println(DefinesMessage.ID_ERROR);
                     break;
                 }
-                System.out.println("index: " + k);
                 if (k == -1) {
                     k = UtilFunc.enterFunction(pList.size(), "Nhập vị trí bạn muốn thêm vào (<= "
                             + pList.size() + "): ");
                 }
                 message = peopleDAO.addPeopleIntoList(people, k, pList);
                 if (message) {
-                    System.out.println(DefinesMessage.SUCCESS_MESSAGE);
+                    System.out.println(DefinesMessage.ADD_SUCCESS);
                 } else {
-                    System.out.println(DefinesMessage.LOSE_MESSAGE);
+                    System.out.println(DefinesMessage.ADD_LOSE);
                 }
             case 4:
                 break;

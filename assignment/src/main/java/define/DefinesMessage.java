@@ -1,7 +1,9 @@
 package define;
 
 public class DefinesMessage {
-    public static final String SUCCESS_MESSAGE = "Thêm thành công";
-    public static final String LOSE_MESSAGE = "Thêm thất bại";
-    public static final String ID_ERROR_MESSAGE = "ID tồn tại";
+    public static final String ADD_SUCCESS = "Thêm thành công";
+    public static final String ADD_LOSE = "Thêm thất bại";
+    public static final String ID_ERROR = "ID tồn tại";
+    public static final String EDIT_SUCCESS = "Sửa thành công";
+    public static final String EDIT_LOSE = "Không tìm thấy cán bộ để sửa";
 }
