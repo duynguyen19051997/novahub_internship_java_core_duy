@@ -2,6 +2,7 @@ package model.dao;
 
 import define.DefineOfficials;
 import model.bean.Staff;
+import model.bean.Teacher;
 import utils.UtilFunc;
 
 import java.util.ArrayList;
@@ -58,6 +59,23 @@ public class StaffDAO {
     }
 
     public void showStaffList(ArrayList<Staff> list) {
+        if (list.size() <= 0) {
+            System.out.println("Danh sách nhân viên rỗng ");
+        } else {
+            System.out.println("Danh sách thông tin cán bộ giáo viên ");
+            System.out.println("STT \t Tên \t Năm sinh \t Quê quán \t Loại \t Phòng ban \t Chức vụ " +
+                    " \t Phụ cấp \t Số ngày công \t Hệ số lương");
+            for (Staff s : list) {
+                System.out.println(s.getPeopleId() + " \t " + s.getFullName()
+                        + " \t " + s.getYearOfBirth() + " \t " + s.getAddress() + " \t " +
+                        "NV"
+                        + " \t " + s.getDepartment()
+                        + " \t " + DefineOfficials.OFFICIALS_LIST[s.getPosition()]
+                        + " \t " + s.getAllowance()
+                        + " \t " + s.getNumberOfWorkdays()
+                        + " \t " + s.getCoefficientsSalary());
+            }
+        }
     }
 
     public double calculateOFWage(Staff staff) {

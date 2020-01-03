@@ -26,4 +26,16 @@ public class PeopleDAO {
         }
         return false;
     }
+
+    public void showPeopleList(ArrayList<People> pList) {
+        if (pList.size() <= 0) {
+            System.out.println("Danh sách rỗng ");
+        } else {
+            System.out.println("STT \t Tên \t Năm sinh \t Quê quán ");
+            for (People p : pList) {
+                System.out.println(p.getPeopleId() + " \t " + p.getFullName()
+                        + " \t " + p.getYearOfBirth() + " \t " + p.getAddress());
+            }
+        }
+    }
 }

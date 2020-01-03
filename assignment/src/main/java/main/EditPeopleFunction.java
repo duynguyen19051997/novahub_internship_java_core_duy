@@ -13,7 +13,7 @@ import utils.UtilFunc;
 import java.util.ArrayList;
 
 public class EditPeopleFunction {
-    public static void function1(ArrayList<People> pList, ArrayList<Teacher> tList,
+    public static void function2(ArrayList<People> pList, ArrayList<Teacher> tList,
                                  ArrayList<Labor> lList, ArrayList<Staff> sList) {
         if (pList.size() == 0) {
             UtilFunc.print("Danh sách rỗng");
