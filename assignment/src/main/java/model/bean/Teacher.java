@@ -37,8 +37,10 @@ public class Teacher extends People {
         this.yearOfService = yearOfService;
     }
 
-    public double computeSalaryTeacher() {
-        return (this.coefficientsSalary * DefineOfficials.BASIC_SALARY + this.allowance + this.lessionOfMonth * 45);
+    public double computeSalaryTeacher(Teacher teacher) {
+        DefineOfficials defineOfficials = new DefineOfficials();
+        return (teacher.getCoefficientsSalary() * defineOfficials.BASIC_SALARY + teacher.getAllowance() +
+                teacher.getLessionOfMonth() * 45);
     }
 
 

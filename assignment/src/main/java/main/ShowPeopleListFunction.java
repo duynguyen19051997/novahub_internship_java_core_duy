@@ -4,15 +4,15 @@ import model.bean.Labor;
 import model.bean.People;
 import model.bean.Staff;
 import model.bean.Teacher;
-import model.dao.LaborDAO;
 import model.dao.PeopleDAO;
-import model.dao.StaffDAO;
-import model.dao.TeacherDAO;
 import utils.UtilFunc;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class ShowPeopleListFunction {
+    private static final Scanner SCANNER = new Scanner(System.in);
+
     public static void showMenuFunction4() {
         System.out.println("======================================Menu======================================");
         System.out.println("4.1 Hiển thị danh sách hiện tại.");
@@ -37,6 +37,15 @@ public class ShowPeopleListFunction {
                 break;
             case 3:
                 peopleDAO.showPeopleListWithSortABC(pList, tList, sList);
+                break;
+            case 4:
+                System.out.println("Nhập tên bạn muốn tìm: ");
+                String search = SCANNER.nextLine();
+                peopleDAO.searchPeopleByName(pList, tList, sList, search);
+                break;
+            case 5:
+                int year = UtilFunc.enterNumber("Nhập năm sinh để tìm kiếm: ");
+                peopleDAO.searchPeopleByYearOfBirth(pList, tList, sList, year);
                 break;
         }
     }
