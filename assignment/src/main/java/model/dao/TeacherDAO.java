@@ -15,6 +15,17 @@ public class TeacherDAO {
         for (Teacher t : tList) {
             if (t.getPeopleId().equals(peopleId)) {
                 teacher = t;
+                break;
+            }
+        }
+        return teacher;
+    }
+
+    public Teacher findAndDeleteTeacherByPeopleId(ArrayList<Teacher> tList, String peopleId) {
+        Teacher teacher = null;
+        for (Teacher t : tList) {
+            if (t.getPeopleId().equals(peopleId)) {
+                teacher = t;
                 tList.remove(t);
                 break;
             }
@@ -41,8 +52,6 @@ public class TeacherDAO {
 
         teacher.setYearOfService(UtilFunc.enterNumber("Nhập số năm làm việc: "));
 
-        teacher.setSalary(teacher.computeSalaryTeacher());
-
         tList.add(teacher);
 
         return teacher;
@@ -54,7 +63,6 @@ public class TeacherDAO {
         teacher.setPeopleId("T" + teacher.getPeopleId());
         teacher.setLevel(roleOfOfficial);
         teacher.setAllowance(DefineOfficials.ALLOWANCE_LIST[roleOfOfficial]);
-        teacher.setSalary(teacher.computeSalaryTeacher());
         return teacher;
     }
 
@@ -63,6 +71,23 @@ public class TeacherDAO {
     }
 
     public void showTeacherList(ArrayList<Teacher> list) {
+        if (list.size() <= 0) {
+            System.out.println("Danh sách giáo viên rỗng ");
+        } else {
+            System.out.println("Danh sách thông tin cán bộ giáo viên ");
+            System.out.println("STT \t Tên \t Năm sinh \t Quê quán \t Loại \t Khoa \t Trình độ" +
+                    " \t Phụ cấp \t Số tiết \t Hệ số lương");
+            for (Teacher t : list) {
+                System.out.println(t.getPeopleId() + " \t " + t.getFullName()
+                        + " \t " + t.getYearOfBirth() + " \t " + t.getAddress() + " \t " +
+                        "GV"
+                        + " \t " + t.getFaculty()
+                        + " \t " + DefineOfficials.OFFICIALS_LIST[t.getLevel()]
+                        + " \t " + t.getAllowance()
+                        + " \t " + t.getLessionOfMonth()
+                        + " \t " + t.getCoefficientsSalary());
+            }
+        }
     }
 
     public double calculateOfWage(Teacher teacher) {

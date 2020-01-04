@@ -12,7 +12,9 @@ public class UtilFunc {
             print(text);
             try {
                 number = Integer.parseInt(SCANNER.nextLine());
-                if (number < 0) {
+                if (number >= 0) {
+                    check = false;
+                } else {
                     print("Vui lòng nhập > 0");
                     check = true;
                 }

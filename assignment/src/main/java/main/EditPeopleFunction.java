@@ -13,7 +13,7 @@ import utils.UtilFunc;
 import java.util.ArrayList;
 
 public class EditPeopleFunction {
-    public static void function1(ArrayList<People> pList, ArrayList<Teacher> tList,
+    public static void function2(ArrayList<People> pList, ArrayList<Teacher> tList,
                                  ArrayList<Labor> lList, ArrayList<Staff> sList) {
         if (pList.size() == 0) {
             UtilFunc.print("Danh sách rỗng");
@@ -30,11 +30,11 @@ public class EditPeopleFunction {
         char id = people.getPeopleId().charAt(0);
         if (id == 'T') {
             TeacherDAO teacherDAO = new TeacherDAO();
-            Teacher teacher = teacherDAO.findTeacherByPeopleId(tList, people.getPeopleId());
+            Teacher teacher = teacherDAO.findAndDeleteTeacherByPeopleId(tList, people.getPeopleId());
             if (teacher != null) {
                 teacher = teacherDAO.editTeacher(teacher, tList);
                 people = new People(teacher.getPeopleId(), teacher.getFullName(),
-                        teacher.getYearOfBirth(), teacher.getAddress());
+                        teacher.getYearOfBirth(), teacher.getAddress(), teacher.computeSalaryTeacher());
                 pList.set(number, people);
                 UtilFunc.print(people.toString());
                 UtilFunc.print(DefinesMessage.EDIT_SUCCESS);
@@ -43,11 +43,11 @@ public class EditPeopleFunction {
             }
         } else if (id == 'S') {
             StaffDAO staffDAO = new StaffDAO();
-            Staff staff = staffDAO.findStaffByPeopleId(sList, people.getPeopleId());
+            Staff staff = staffDAO.findAndDeleteStaffByPeopleId(sList, people.getPeopleId());
             if (staff != null) {
                 staff = staffDAO.editStaff(staff, sList);
                 people = new People(staff.getPeopleId(), staff.getFullName(),
-                        staff.getYearOfBirth(), staff.getAddress());
+                        staff.getYearOfBirth(), staff.getAddress(), staff.computeSalaryStaff());
                 pList.set(number, people);
                 UtilFunc.print(people.toString());
                 UtilFunc.print(DefinesMessage.EDIT_SUCCESS);
@@ -56,11 +56,11 @@ public class EditPeopleFunction {
             }
         } else {
             LaborDAO laborDAO = new LaborDAO();
-            Labor labor = laborDAO.findLaborByPeopleId(lList, people.getPeopleId());
+            Labor labor = laborDAO.findAndDeleteLaborByPeopleId(lList, people.getPeopleId());
             if (labor != null) {
                 labor = laborDAO.editLabor(labor, lList);
                 people = new People(labor.getPeopleId(), labor.getFullName(),
-                        labor.getYearOfBirth(), labor.getAddress());
+                        labor.getYearOfBirth(), labor.getAddress(), labor.computeSalaryLabor());
                 pList.set(number, people);
                 UtilFunc.print(people.toString());
                 UtilFunc.print(DefinesMessage.EDIT_SUCCESS);

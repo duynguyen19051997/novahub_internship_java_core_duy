@@ -16,24 +16,22 @@ public class Staff extends People {
     private int allowance;
     private int position;
     private int yearOfService;
-    private double salary;
 
     public Staff(String peopleId, String fullName,
                  int yearOfBirth, String address, int department,
                  int numberOfWorkdays, int coefficientsSalary, int allowance,
                  int position, int yearOfService, double salary) {
-        super(peopleId, fullName, yearOfBirth, address);
+        super(peopleId, fullName, yearOfBirth, address, salary);
         this.department = department;
         this.numberOfWorkdays = numberOfWorkdays;
         this.coefficientsSalary = coefficientsSalary;
         this.allowance = allowance;
         this.position = position;
         this.yearOfService = yearOfService;
-        this.salary = salary;
     }
 
-    public Staff(String peopleId, String fullName, int yearOfBirth, String address) {
-        super(peopleId, fullName, yearOfBirth, address);
+    public Staff(String peopleId, String fullName, int yearOfBirth, String address, double salary) {
+        super(peopleId, fullName, yearOfBirth, address, salary);
     }
 
     public double computeSalaryStaff() {

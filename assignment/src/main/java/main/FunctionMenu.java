@@ -25,11 +25,13 @@ public class FunctionMenu {
                 InsertNewPeopleFunction.function1(pList, tList, lList, sList);
                 break;
             case 2:
-                EditPeopleFunction.function1(pList, tList, lList, sList);
+                EditPeopleFunction.function2(pList, tList, lList, sList);
                 break;
             case 3:
+                DeletePeopleFunction.function3(pList, tList, lList, sList);
                 break;
             case 4:
+                ShowPeopleListFunction.function4(pList, tList, lList, sList);
                 break;
             case 5:
                 break;

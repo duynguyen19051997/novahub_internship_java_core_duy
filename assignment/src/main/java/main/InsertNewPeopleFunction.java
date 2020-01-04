@@ -47,7 +47,7 @@ public class InsertNewPeopleFunction {
                     TeacherDAO teacherDAO = new TeacherDAO();
                     Teacher teacher = teacherDAO.insertTeacher(roleOfOfficial);
                     people = new People(teacher.getPeopleId(), teacher.getFullName(), teacher.getYearOfBirth(),
-                            teacher.getAddress());
+                            teacher.getAddress(), teacher.computeSalaryTeacher());
                     if (!peopleDAO.checkPeopleID(pList, people.getPeopleId())) {
                         tList.add(teacher);
                     }
@@ -56,7 +56,7 @@ public class InsertNewPeopleFunction {
                     LaborDAO laborDAO = new LaborDAO();
                     Labor labor = laborDAO.insertLabor(roleOfOfficial);
                     people = new People(labor.getPeopleId(), labor.getFullName(), labor.getYearOfBirth(),
-                            labor.getAddress());
+                            labor.getAddress(), labor.computeSalaryLabor());
                     if (!peopleDAO.checkPeopleID(pList, people.getPeopleId())) {
                         lList.add(labor);
                     }
@@ -65,7 +65,7 @@ public class InsertNewPeopleFunction {
                     StaffDAO staffDAO = new StaffDAO();
                     Staff staff = staffDAO.insertStaff(roleOfOfficial);
                     people = new People(staff.getPeopleId(), staff.getFullName(), staff.getYearOfBirth(),
-                            staff.getAddress());
+                            staff.getAddress(), staff.computeSalaryStaff());
                     if (!peopleDAO.checkPeopleID(pList, people.getPeopleId())) {
                         sList.add(staff);
                     }

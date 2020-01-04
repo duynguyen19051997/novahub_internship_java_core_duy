@@ -16,7 +16,7 @@ public class LaborDAO {
         return labor;
     }
 
-    public Labor findLaborByPeopleId(ArrayList<Labor> lList, String peopleId) {
+    public Labor findAndDeleteLaborByPeopleId(ArrayList<Labor> lList, String peopleId) {
         Labor labor = null;
         for (Labor l : lList) {
             if (l.getPeopleId().equals(peopleId)) {
@@ -37,7 +37,6 @@ public class LaborDAO {
         labor.setAddress(SCANNER.nextLine());
         labor.setNumberOfWorkdays(UtilFunc.enterNumber("Nhập số ngày làm việc: "));
         labor.setPriceOfWorkday(UtilFunc.enterNumber("Đơn giá: "));
-        labor.setSalary(labor.getNumberOfWorkdays() * labor.getPriceOfWorkday());
 
         lList.add(labor);
 

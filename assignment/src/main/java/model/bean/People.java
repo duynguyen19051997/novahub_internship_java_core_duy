@@ -15,6 +15,7 @@ public class People {
     private String fullName;
     private int yearOfBirth;
     private String address;
+    private double salary;
 
     public static final Scanner SCANNER = new Scanner(System.in);
 
