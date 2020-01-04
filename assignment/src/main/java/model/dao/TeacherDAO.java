@@ -58,11 +58,12 @@ public class TeacherDAO {
     }
 
     public Teacher insertTeacher(int roleOfOfficial) {
+        DefineOfficials defineOfficials = new DefineOfficials();
         Teacher teacher = new Teacher();
         teacher.insertPeople();
         teacher.setPeopleId("T" + teacher.getPeopleId());
         teacher.setLevel(roleOfOfficial);
-        teacher.setAllowance(DefineOfficials.ALLOWANCE_LIST[roleOfOfficial]);
+        teacher.setAllowance(defineOfficials.ALLOWANCE_LIST[roleOfOfficial]);
         return teacher;
     }
 

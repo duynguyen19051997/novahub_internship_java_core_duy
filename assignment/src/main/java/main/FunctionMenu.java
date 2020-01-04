@@ -34,10 +34,13 @@ public class FunctionMenu {
                 ShowPeopleListFunction.function4(pList, tList, lList, sList);
                 break;
             case 5:
+                DeleteAllPeopleFunction.function5(pList, tList, lList, sList);
                 break;
             case 6:
+                ShowPeopleListBySalaryFunction.function6(pList);
                 break;
             case 7:
+                UpdateNewBasicSalaryFunction.function7(pList, tList, lList, sList);
                 break;
             case 8:
                 break;

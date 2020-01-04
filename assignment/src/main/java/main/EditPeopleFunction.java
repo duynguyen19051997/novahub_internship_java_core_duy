@@ -19,6 +19,9 @@ public class EditPeopleFunction {
             UtilFunc.print("Danh sách rỗng");
             return;
         }
+        TeacherDAO teacherDAO = new TeacherDAO();
+        LaborDAO laborDAO = new LaborDAO();
+        StaffDAO staffDAO = new StaffDAO();
         int number = 0;
         do {
             number = UtilFunc.enterNumber("Nhập số thứ tự cán bộ cần chỉnh sửa: ");
@@ -29,12 +32,11 @@ public class EditPeopleFunction {
         People people = pList.get(number);
         char id = people.getPeopleId().charAt(0);
         if (id == 'T') {
-            TeacherDAO teacherDAO = new TeacherDAO();
             Teacher teacher = teacherDAO.findAndDeleteTeacherByPeopleId(tList, people.getPeopleId());
             if (teacher != null) {
                 teacher = teacherDAO.editTeacher(teacher, tList);
                 people = new People(teacher.getPeopleId(), teacher.getFullName(),
-                        teacher.getYearOfBirth(), teacher.getAddress(), teacher.computeSalaryTeacher());
+                        teacher.getYearOfBirth(), teacher.getAddress(), teacher.computeSalaryTeacher(teacher));
                 pList.set(number, people);
                 UtilFunc.print(people.toString());
                 UtilFunc.print(DefinesMessage.EDIT_SUCCESS);
@@ -42,7 +44,6 @@ public class EditPeopleFunction {
                 UtilFunc.print(DefinesMessage.EDIT_LOSE);
             }
         } else if (id == 'S') {
-            StaffDAO staffDAO = new StaffDAO();
             Staff staff = staffDAO.findAndDeleteStaffByPeopleId(sList, people.getPeopleId());
             if (staff != null) {
                 staff = staffDAO.editStaff(staff, sList);
@@ -55,7 +56,6 @@ public class EditPeopleFunction {
                 UtilFunc.print(DefinesMessage.EDIT_LOSE);
             }
         } else {
-            LaborDAO laborDAO = new LaborDAO();
             Labor labor = laborDAO.findAndDeleteLaborByPeopleId(lList, people.getPeopleId());
             if (labor != null) {
                 labor = laborDAO.editLabor(labor, lList);

@@ -33,6 +33,18 @@ public class PeopleDAO {
         return false;
     }
 
+    public void showPeople(ArrayList<People> pList) {
+        if (pList.size() <= 0) {
+            System.out.println("Danh sách rỗng ");
+        } else {
+            System.out.println("STT \t Tên \t Năm sinh \t Quê quán \t Lương ");
+            for (People p : pList) {
+                System.out.println(p.getPeopleId() + " \t " + p.getFullName() + " \t "
+                        + p.getYearOfBirth() + " \t " + p.getAddress() + " \t " + p.getSalary());
+            }
+        }
+    }
+
     public void showPeopleList(ArrayList<People> pList, ArrayList<Teacher> tList,
                                ArrayList<Staff> sList) {
         if (pList.size() <= 0) {
@@ -82,6 +94,7 @@ public class PeopleDAO {
                 return people1.getFullName().compareTo(people2.getFullName());
             }
         });
+        System.out.println("Danh sách cán bộ được sắp xếp theo chiều tăng dần bảng chữ cái ");
         showPeopleList(peopleList, tList, sList);
     }
 
@@ -93,6 +106,30 @@ public class PeopleDAO {
                 return (Double.compare(people1.getSalary(), people2.getSalary()));
             }
         });
+        System.out.println("Danh sách cán bộ được sắp xếp tăng dần theo lương ");
+        showPeopleList(peopleList, tList, sList);
+    }
+
+    public void searchPeopleByName(ArrayList<People> pList, ArrayList<Teacher> tList, ArrayList<Staff> sList, String search) {
+        ArrayList<People> peopleList = new ArrayList<>();
+        for (People p : pList) {
+            String name = p.getFullName().toLowerCase();
+            if (name.contains(search)) {
+                peopleList.add(p);
+            }
+        }
+        System.out.println("Kết quả tìm kiếm với từ khóa '" + search + "'");
+        showPeopleList(peopleList, tList, sList);
+    }
+
+    public void searchPeopleByYearOfBirth(ArrayList<People> pList, ArrayList<Teacher> tList, ArrayList<Staff> sList, int year) {
+        ArrayList<People> peopleList = new ArrayList<>();
+        for (People p : pList) {
+            if (p.getYearOfBirth() == year) {
+                peopleList.add(p);
+            }
+        }
+        System.out.println("Kết quả tìm kiếm theo năm sinh " + year + "");
         showPeopleList(peopleList, tList, sList);
     }
 }

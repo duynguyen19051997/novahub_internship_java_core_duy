@@ -12,9 +12,10 @@ public class StaffDAO {
 
     public Staff insertStaff(int roleOfOfficial) {
         Staff staff = new Staff();
+        DefineOfficials defineOfficials = new DefineOfficials();
         staff.insertPeople();
         staff.setPeopleId("S" + staff.getPeopleId());
-        staff.setAllowance(DefineOfficials.ALLOWANCE_LIST[roleOfOfficial]);
+        staff.setAllowance(defineOfficials.ALLOWANCE_LIST[roleOfOfficial]);
         return staff;
     }
 

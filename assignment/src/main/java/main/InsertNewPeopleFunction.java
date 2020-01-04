@@ -47,7 +47,7 @@ public class InsertNewPeopleFunction {
                     TeacherDAO teacherDAO = new TeacherDAO();
                     Teacher teacher = teacherDAO.insertTeacher(roleOfOfficial);
                     people = new People(teacher.getPeopleId(), teacher.getFullName(), teacher.getYearOfBirth(),
-                            teacher.getAddress(), teacher.computeSalaryTeacher());
+                            teacher.getAddress(), teacher.computeSalaryTeacher(teacher));
                     if (!peopleDAO.checkPeopleID(pList, people.getPeopleId())) {
                         tList.add(teacher);
                     }

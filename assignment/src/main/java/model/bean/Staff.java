@@ -35,7 +35,8 @@ public class Staff extends People {
     }
 
     public double computeSalaryStaff() {
-        return this.coefficientsSalary * DefineOfficials.BASIC_SALARY + this.allowance + this.numberOfWorkdays * 30;
+        DefineOfficials defineOfficials = new DefineOfficials();
+        return this.coefficientsSalary * defineOfficials.BASIC_SALARY + this.allowance + this.numberOfWorkdays * 30;
     }
 
     @Override
