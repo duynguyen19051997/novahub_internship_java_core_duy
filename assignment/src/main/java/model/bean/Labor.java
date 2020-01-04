@@ -11,19 +11,21 @@ import utils.UtilFunc;
 public class Labor extends People {
     private int numberOfWorkdays;
     private int priceOfWorkday;
-    private double salary;
 
     public Labor(String peopleId, String fullName,
                  int yearOfBirth, String address, int numberOfWorkdays, int priceOfWorkday,
                  double salary) {
-        super(peopleId, fullName, yearOfBirth, address);
+        super(peopleId, fullName, yearOfBirth, address, salary);
         this.numberOfWorkdays = numberOfWorkdays;
         this.priceOfWorkday = priceOfWorkday;
-        this.salary = salary;
     }
 
-    public Labor(String peopleId, String fullName, int yearOfBirth, String address) {
-        super(peopleId, fullName, yearOfBirth, address);
+    public Labor(String peopleId, String fullName, int yearOfBirth, String address, double salary) {
+        super(peopleId, fullName, yearOfBirth, address, salary);
+    }
+
+    public double computeSalaryLabor() {
+        return this.numberOfWorkdays * this.priceOfWorkday;
     }
 
     @Override
@@ -33,7 +35,5 @@ public class Labor extends People {
         this.numberOfWorkdays = UtilFunc.enterNumber("Nhập số ngày làm việc: ");
 
         this.priceOfWorkday = UtilFunc.enterNumber("Đơn giá: ");
-
-        this.salary = this.numberOfWorkdays * this.priceOfWorkday;
     }
 }

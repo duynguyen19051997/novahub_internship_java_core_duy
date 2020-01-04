@@ -1,7 +1,6 @@
 package model.dao;
 
 import define.DefineOfficials;
-import model.bean.People;
 import model.bean.Teacher;
 import utils.UtilFunc;
 
@@ -12,6 +11,17 @@ public class TeacherDAO {
     public static final Scanner SCANNER = new Scanner(System.in);
 
     public Teacher findTeacherByPeopleId(ArrayList<Teacher> tList, String peopleId) {
+        Teacher teacher = null;
+        for (Teacher t : tList) {
+            if (t.getPeopleId().equals(peopleId)) {
+                teacher = t;
+                break;
+            }
+        }
+        return teacher;
+    }
+
+    public Teacher findAndDeleteTeacherByPeopleId(ArrayList<Teacher> tList, String peopleId) {
         Teacher teacher = null;
         for (Teacher t : tList) {
             if (t.getPeopleId().equals(peopleId)) {
@@ -42,8 +52,6 @@ public class TeacherDAO {
 
         teacher.setYearOfService(UtilFunc.enterNumber("Nhập số năm làm việc: "));
 
-        teacher.setSalary(teacher.computeSalaryTeacher());
-
         tList.add(teacher);
 
         return teacher;
@@ -55,7 +63,6 @@ public class TeacherDAO {
         teacher.setPeopleId("T" + teacher.getPeopleId());
         teacher.setLevel(roleOfOfficial);
         teacher.setAllowance(DefineOfficials.ALLOWANCE_LIST[roleOfOfficial]);
-        teacher.setSalary(teacher.computeSalaryTeacher());
         return teacher;
     }
 

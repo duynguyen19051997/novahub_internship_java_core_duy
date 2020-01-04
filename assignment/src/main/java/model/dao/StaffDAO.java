@@ -2,7 +2,6 @@ package model.dao;
 
 import define.DefineOfficials;
 import model.bean.Staff;
-import model.bean.Teacher;
 import utils.UtilFunc;
 
 import java.util.ArrayList;
@@ -16,11 +15,21 @@ public class StaffDAO {
         staff.insertPeople();
         staff.setPeopleId("S" + staff.getPeopleId());
         staff.setAllowance(DefineOfficials.ALLOWANCE_LIST[roleOfOfficial]);
-        staff.setSalary(staff.computeSalaryStaff());
         return staff;
     }
 
     public Staff findStaffByPeopleId(ArrayList<Staff> sList, String peopleId) {
+        Staff staff = null;
+        for (Staff s : sList) {
+            if (s.getPeopleId().equals(peopleId)) {
+                staff = s;
+                break;
+            }
+        }
+        return staff;
+    }
+
+    public Staff findAndDeleteStaffByPeopleId(ArrayList<Staff> sList, String peopleId) {
         Staff staff = null;
         for (Staff s : sList) {
             if (s.getPeopleId().equals(peopleId)) {
@@ -43,7 +52,6 @@ public class StaffDAO {
         staff.setNumberOfWorkdays(UtilFunc.enterNumber("Nhập số ngày công: "));
         staff.setCoefficientsSalary(UtilFunc.enterNumber("Nhập hệ số lương: "));
         staff.setYearOfService(UtilFunc.enterNumber("Số năm làm việc: "));
-        staff.setSalary(staff.computeSalaryStaff());
 
         sList.add(staff);
 

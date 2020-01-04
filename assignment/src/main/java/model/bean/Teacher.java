@@ -18,25 +18,23 @@ public class Teacher extends People {
     private int lessionOfMonth;
     private int coefficientsSalary;
     private int yearOfService;
-    private double salary;
 
     private static final Scanner SCANNER = new Scanner(System.in);
 
-    public Teacher(String peopleId, String fullName, int yearOfBirth, String address) {
-        super(peopleId, fullName, yearOfBirth, address);
+    public Teacher(String peopleId, String fullName, int yearOfBirth, String address, double salary) {
+        super(peopleId, fullName, yearOfBirth, address, salary);
     }
 
     public Teacher(String peopleId, String fullName, int yearOfBirth, String address,
                    String faculty, int level, int allowance, int lessionOfMonth,
                    int coefficientsSalary, int yearOfService, double salary) {
-        super(peopleId, fullName, yearOfBirth, address);
+        super(peopleId, fullName, yearOfBirth, address, salary);
         this.faculty = faculty;
         this.level = level;
         this.allowance = allowance;
         this.lessionOfMonth = lessionOfMonth;
         this.coefficientsSalary = coefficientsSalary;
         this.yearOfService = yearOfService;
-        this.salary = salary;
     }
 
     public double computeSalaryTeacher() {

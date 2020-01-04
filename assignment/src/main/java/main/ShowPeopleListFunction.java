@@ -26,16 +26,17 @@ public class ShowPeopleListFunction {
     public static void function4(ArrayList<People> pList, ArrayList<Teacher> tList,
                                  ArrayList<Labor> lList, ArrayList<Staff> sList) {
         PeopleDAO peopleDAO = new PeopleDAO();
-        TeacherDAO teacherDAO = new TeacherDAO();
-        LaborDAO laborDAO = new LaborDAO();
-        StaffDAO staffDAO = new StaffDAO();
         showMenuFunction4();
         int number = UtilFunc.enterFunction(5, "Vui lòng chọn chức năng: ");
         switch (number) {
             case 1:
-                peopleDAO.showPeopleList(pList);
-                teacherDAO.showTeacherList(tList);
-                staffDAO.showStaffList(sList);
+                peopleDAO.showPeopleList(pList, tList, sList);
+                break;
+            case 2:
+                peopleDAO.showPeopleListWithSortSalary(pList, tList, sList);
+                break;
+            case 3:
+                peopleDAO.showPeopleListWithSortABC(pList, tList, sList);
                 break;
         }
     }

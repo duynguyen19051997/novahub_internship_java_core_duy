@@ -31,7 +31,7 @@ public class DeletePeopleFunction {
         char id = people.getPeopleId().charAt(0);
         if (id == 'T') {
             TeacherDAO teacherDAO = new TeacherDAO();
-            Teacher teacher = teacherDAO.findTeacherByPeopleId(tList, people.getPeopleId());
+            Teacher teacher = teacherDAO.findAndDeleteTeacherByPeopleId(tList, people.getPeopleId());
             if (teacher != null) {
                 UtilFunc.print(DefinesMessage.DELETE_SUCCESS);
             } else {
@@ -39,7 +39,7 @@ public class DeletePeopleFunction {
             }
         } else if (id == 'S') {
             StaffDAO staffDAO = new StaffDAO();
-            Staff staff = staffDAO.findStaffByPeopleId(sList, people.getPeopleId());
+            Staff staff = staffDAO.findAndDeleteStaffByPeopleId(sList, people.getPeopleId());
             if (staff != null) {
                 UtilFunc.print(DefinesMessage.DELETE_SUCCESS);
             } else {
@@ -47,7 +47,7 @@ public class DeletePeopleFunction {
             }
         } else {
             LaborDAO laborDAO = new LaborDAO();
-            Labor labor = laborDAO.findLaborByPeopleId(lList, people.getPeopleId());
+            Labor labor = laborDAO.findAndDeleteLaborByPeopleId(lList, people.getPeopleId());
             if (labor != null) {
                 UtilFunc.print(DefinesMessage.DELETE_SUCCESS);
             } else {
